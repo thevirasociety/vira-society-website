@@ -238,7 +238,7 @@ export default function Home() {
             href="mailto:hello@thevirasociety.com"
             className="mt-8 inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
           >
-            Contact for tickets
+            Contact for tickets now
           </a>
         </div>
       </section>
