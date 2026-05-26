@@ -21,6 +21,11 @@ import { upcomingEvents } from "./data/events";
 import Footer from "./components/footer";
 
 export default function Home() {
+
+  const activeTicketEvent = upcomingEvents.find(
+  (event) => event.ticketActive && event.ticketUrl
+);
+
   return (
     <main className="min-h-screen bg-[#F5F1E8] text-[#4E463A]">
       <header className="fixed left-0 top-0 z-50 w-full border-b border-[#DDD6C8] bg-[#F5F1E8]/90 backdrop-blur">
@@ -218,30 +223,52 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tickets" className="bg-[#4D5300] px-6 py-24 text-white">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#CBB98E]">
-            Tickets
-          </p>
+ <section id="tickets" className="bg-[#4D5300] px-6 py-24 text-white">
+  <div className="mx-auto max-w-4xl text-center">
+    <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#CBB98E]">
+      Tickets
+    </p>
 
-          <h2 className="text-3xl font-semibold md:text-5xl">
-            Ready to join the next gathering?
-          </h2>
+    <h2 className="text-3xl font-semibold md:text-5xl">
+      Ready to join the next gathering?
+    </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl leading-8 text-[#F5F1E8]">
-            Tickets for upcoming events will be available soon. For now, contact
-            The Vira Society for announcements, collaborations, and early
-            access.
-          </p>
+    <p className="mx-auto mt-6 max-w-2xl leading-8 text-[#F5F1E8]">
+      {activeTicketEvent
+        ? `Tickets are now available for ${activeTicketEvent.title}. Capacity is intentionally limited to preserve the atmosphere and experience of the evening.`
+        : "Tickets for upcoming events will be available soon. For early access, announcements, or collaborations, contact The Vira Society."}
+    </p>
+
+    <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+      {activeTicketEvent ? (
+        <>
+          <a
+            href={`/events/${activeTicketEvent.slug}`}
+            className="inline-block rounded-full border border-[#F5F1E8] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#F5F1E8] hover:text-[#4D5300]"
+          >
+            View event
+          </a>
 
           <a
-            href="mailto:hello@thevirasociety.com"
-            className="mt-8 inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
+            href={activeTicketEvent.ticketUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
           >
-            Contact for tickets now
+            Get tickets
           </a>
-        </div>
-      </section>
+        </>
+      ) : (
+        <a
+          href="mailto:hello@thevirasociety.com"
+          className="inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
+        >
+          Contact for tickets
+        </a>
+      )}
+    </div>
+  </div>
+</section>
 
       <Footer />
     </main>

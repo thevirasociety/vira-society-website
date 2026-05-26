@@ -7,6 +7,8 @@ export type Event = {
     venue: string;
     address: string;
     price: string;
+    ticketActive: boolean;
+    ticketUrl?: string;
     description: string;
     shortDescription?: string;
     artistName?: string;
@@ -28,6 +30,8 @@ export const upcomingEvents: Event[] = [
         venue: "Jockel Event Hall",
         address: "Ratiborstraße 14c, 10999 Berlin",
         price: "From 80 EUR",
+        ticketActive: true,
+        ticketUrl: "https://buytickets.at/thevirasociety/2234094",
         artistName: "Estefani",
         cardImage: "/cardImage/Estefani.png", // homepage card only 
         imageFit: "tall",
@@ -46,6 +50,7 @@ export const upcomingEvents: Event[] = [
         venue: "TBA",
         address: "TBA", // ← update with real one
         price: "Tickets coming soon",
+        ticketActive: false,
         cardImage: "/cardImage/mixology.png",
         eventImage: "mixology1.png",
         imageFit: "wide",

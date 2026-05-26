@@ -57,16 +57,28 @@ export default async function EventPage({ params }: EventPageProps) {
                 </p>
 
                 <p className="mt-3 leading-7 text-[#F5F1E8]">
-                  Ticket sales are not active yet. For early access or
-                  questions, contact The Vira Society.
+                  {event.ticketActive
+                    ? "Tickets for this event are available online. Capacity is limited, so we recommend booking in advance."
+                    : "Ticket sales are not active yet. For early access or questions, contact The Vira Society."}
                 </p>
 
-                <a
-                  href="mailto:hello@thevirasociety.com"
-                  className="mt-6 inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
-                >
-                  Contact for tickets
-                </a>
+                {event.ticketActive && event.ticketUrl ? (
+                  <a
+                    href={event.ticketUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
+                  >
+                    Buy tickets
+                  </a>
+                ) : (
+                  <a
+                    href="mailto:hello@thevirasociety.com"
+                    className="mt-6 inline-block rounded-full bg-[#F5F1E8] px-6 py-3 text-sm font-medium text-[#4D5300] transition hover:bg-[#CBB98E]"
+                  >
+                    Contact for tickets
+                  </a>
+                )}
               </div>
             </div>
 
