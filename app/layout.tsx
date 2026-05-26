@@ -41,8 +41,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Vira Society",
-  description: "Mediterranean-inspired events in Berlin and Germany.",
+  title: "The Vira Society | Mediterranean Cultural Events in Berlin",
+  description:
+    "Mediterranean-inspired cultural events in Berlin featuring live music, performances, Turkish-Greek nights, and community gatherings.",
 };
 
 export default function RootLayout({
